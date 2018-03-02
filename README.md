@@ -1,7 +1,7 @@
 ## Dotfiles
 A collection of configuration files to make iTerm2 + zsh + vim beautiful 🔥
 
-![iTerm 2 look]('images/terminal.png' "image of terminal")
+![iTerm 2 look]('dotfiles/images/terminal.png' "image of terminal")
 
 
 ## Vim Plugins
