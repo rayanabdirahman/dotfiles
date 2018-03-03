@@ -4,12 +4,16 @@ A collection of configuration files to make iTerm2 + zsh + vim beautiful 😍
 ![iTerm 2 look](https://github.com/rayanabdirahman/dotfiles/blob/master/images/terminal.png "image of terminal")
 
 ## Terminal
-* [iTERM 2 nightly build](https://iterm2.com/downloads.html)
+* [iTerm 2 nightly build](https://iterm2.com/downloads.html)
 * [Solarized theme](http://ethanschoonover.com/solarized)
+* [ZSH_THEME=arrow](https://github.com/robbyrussell/oh-my-zsh/wiki/themes#arrow)
 
 ![iTerm 2](https://github.com/rayanabdirahman/dotfiles/blob/master/images/terminal-appearance.png "image of terminal appearance settings")
 
 ![iTerm 2](https://github.com/rayanabdirahman/dotfiles/blob/master/images/terminal-margin.png "image of terminal margin settings")
+
+## tmux
+![iTerm 2](https://github.com/rayanabdirahman/dotfiles/blob/master/images/tmux.png "image of tmux terminal")
 
 ## Vim Plugins
 * [NERDTree](https://github.com/scrooloose/nerdtree)
