@@ -13,7 +13,6 @@ Plugin 'arcticicestudio/nord-vim'
 " Solarized theme
 Plugin 'altercation/vim-colors-solarized.git'
 
-
 " Smart comments
 Plugin 'tpope/vim-commentary'
 
@@ -36,6 +35,14 @@ Plugin 'scrooloose/syntastic'
 " Emmet
 Plugin 'mattn/emmet-vim'
 
+" YouCompleteMe
+Plugin 'Valloric/YouCompleteMe'
+
+" Prettier
+Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
+
+" Neoformat
+Plugin 'sbdchd/neoformat'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -124,6 +131,25 @@ endif
 if &term =~ '256color'
 	set t_ut=
 endif
+
+"*****************************************************************************
+"" Neoformat using prettier for Javascript formatting
+"*****************************************************************************
+let g:neoformat_try_formatprg = 1
+
+augroup NeoformatAutoFormat
+    autocmd!
+    autocmd FileType javascript,javascript.jsx setlocal formatprg=prettier\
+                                                            \--stdin\
+                                                            \--print-width\ 80\
+                                                            \--single-quote\
+                                                            \--trailing-comma\ es5
+    autocmd BufWritePre *.js,*.jsx Neoformat
+  augroup END
+
+
+
+
 
 "*****************************************************************************
 "" Airline

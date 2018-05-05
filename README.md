@@ -26,3 +26,6 @@ A collection of configuration files to make iTerm2 + zsh + vim beautiful 😍
 * [Trailing whitespace](https://github.com/bronson/vim-trailing-whitespace)
 * [Auto pair](https://github.com/jiangmiao/auto-pairs)
 * [Syntastic](https://github.com/vim-syntastic/syntastic)
+* [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
+* [Vim Prettier](https://github.com/prettier/vim-prettier)
+* [Neoformat](https://github.com/sbdchd/neoformat)
