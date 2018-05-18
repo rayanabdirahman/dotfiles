@@ -3,6 +3,9 @@ export ZSH=/Users/Apple/.oh-my-zsh
 
 ZSH_THEME=arrow
 
+# Custom theme for emojis
+ZSH_THEME=fish
+
 export UPDATE_ZSH_DAYS=13
 
 plugins=(git osx rails ruby github node nam brew)
