@@ -3,7 +3,7 @@ export ZSH=/Users/Apple/.oh-my-zsh
 
 ZSH_THEME=arrow
 
-# Custom theme for emojis
+# Custom ZSH theme for emojis
 ZSH_THEME=fish
 
 export UPDATE_ZSH_DAYS=13
