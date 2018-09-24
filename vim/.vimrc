@@ -36,7 +36,7 @@ Plugin 'airblade/vim-gitgutter'
 " Whitespace highlighted in red.
 Plugin 'bronson/vim-trailing-whitespace'
 
-" Quick commenting using keys g-c
+" Quick commenting using keys <g-c>
 Plugin 'tpope/vim-commentary'
 
 " Insert or delete brackets, parens, quotes in pair.
