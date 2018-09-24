@@ -1,6 +1,11 @@
 # Dotfiles
 A collection of configuration files to make iTerm2 + zsh + vim beautiful 😍
 
+## Setting up environment
+* [iTerm](https://www.iterm2.com/)
+* [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
+* [Install Homebrew](https://brew.sh/)
+
 ![iTerm 2 look](https://github.com/rayanabdirahman/dotfiles/blob/master/images/terminal.png "image of terminal")
 
 ## Terminal
