@@ -1,61 +1,60 @@
-set nocompatible
-filetype off
+"*******************************************************************
+"Install Plugins
+"*******************************************************************
 
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" NERD tree plugin
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" Challenger Deep theme
+Plugin 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+
+" Lightline for statusline/tabline
+Plugin 'itchyny/lightline.vim'
+
+" NERDtree plugin
 Plugin 'scrooloose/nerdtree'
 
-" Nord theme
-Plugin 'arcticicestudio/nord-vim'
+" Colorizing matching brackets
+Plugin 'luochen1990/rainbow'
 
-" Solarized theme
-Plugin 'altercation/vim-colors-solarized.git'
+" Emmet using keys <CTRL-Y-,>
+Plugin 'mattn/emmet-vim'
 
-" Smart comments
-Plugin 'tpope/vim-commentary'
+" YouCompleteMe code completion
+Plugin 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 
-" Airline
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-
-" Shows a git diff in the gutter (sign column) and stages/undoes hunks.
+" Gitgutter
 Plugin 'airblade/vim-gitgutter'
 
-" This plugin causes all trailing whitespace to be highlighted in red.
+" Whitespace highlighted in red.
 Plugin 'bronson/vim-trailing-whitespace'
+
+" Quick commenting using keys g-c
+Plugin 'tpope/vim-commentary'
 
 " Insert or delete brackets, parens, quotes in pair.
 Plugin 'jiangmiao/auto-pairs'
 
-" Syntax checking hacks for vim
-Plugin 'scrooloose/syntastic'
-
-" Emmet
-Plugin 'mattn/emmet-vim'
-
-" YouCompleteMe
-Plugin 'Valloric/YouCompleteMe'
-
-" Prettier
-Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
-
-" Neoformat
-Plugin 'sbdchd/neoformat'
-
+" All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-"***************************************************************
-"Basic Setting
-"**************************************************************
+
+"*******************************************************************
+"Basic Settings
+"*******************************************************************
 
 " Encoding
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencoding=utf-8
-
 
 " Indentation
 set autoindent
@@ -63,134 +62,42 @@ set cindent
 set expandtab
 set shiftwidth=2
 set smartindent
-set softtabstop=4
-
-" Search
-set hlsearch
-set smartcase
-set ignorecase
-set incsearch
+set softtabstop=2
 
 " Line managment
+" show line number
 set number
-set linebreak
-set showbreak=+++
-set textwidth=100
-set showmatch
-set spell
-set visualbell
-
-set ruler
-
-set undolevels=1000
-set backspace=indent,eol,start
 
 
 "*******************************************************************
 "Visual Settings
 "*******************************************************************
 
+" turn syntax on for colorscheme
 syntax on
 set ruler
 
-" Set colorscheme
-let no_buffers_menu=1
-if !exists('g:not_finish_neobundle')
-	" colorscheme nord
-        colorscheme solarized
-	set background=dark
+" check for terminal colours
+if has('nvim') || has('termguicolors')
+  set termguicolors
 endif
 
-" Set terminal colours to 256color
-" Set font family
-set mouse=a
-set mousemodel=popup
-set t_Co=256
-set guioptions=egmrti
-set gfn=Monospace\ 10
-
-if has("gui_running")
-	if has("gui_mac") || has("gui_macvim")
-		set guifont=Menlo:h12
-		set transparency=7
-	endif
-else
-	let g:CSApprox_loaded = 1
+" set colorscheme
+colorscheme challenger_deep
 
 
-	if $COLORTERM == 'gnome-terminal'
-		set term=gnome-256color
-	else
-		if $TERM == 'xterm'
-			set term=xterm-256color
-		endif
-	endif
+"*******************************************************************
+"Lightline Settings
+"*******************************************************************
 
-endif
+" set theme to challenger deep
+let g:lightline = { 'colorscheme': 'challenger_deep'}
+set laststatus=2
 
-if &term =~ '256color'
-	set t_ut=
-endif
+"*******************************************************************
+"Rainbow brackets Settings
+"*******************************************************************
 
-"*****************************************************************************
-"" Neoformat using prettier for Javascript formatting
-"*****************************************************************************
-let g:neoformat_try_formatprg = 1
-
-augroup NeoformatAutoFormat
-    autocmd!
-    autocmd FileType javascript,javascript.jsx setlocal formatprg=prettier\
-                                                            \--stdin\
-                                                            \--print-width\ 80\
-                                                            \--single-quote\
-                                                            \--trailing-comma\ es5
-    autocmd BufWritePre *.js,*.jsx Neoformat
-  augroup END
-
-
-
-
-
-"*****************************************************************************
-"" Airline
-"*****************************************************************************
-if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
-endif
-
-if !exists('g:airline_powerline_fonts')
-	let g:airline#extensions#tabline#left_sep = ' '
-	let g:airline#extensions#tabline#left_alt_sep = '|'
-	let g:airline_left_sep          = '▶'
-	let g:airline_left_alt_sep      = '»'
-	let g:airline_right_sep         = '◀'
-	let g:airline_right_alt_sep     = '«'
-	let g:airline#extensions#branch#prefix     = '⤴' "➔, ➥, ⎇
-	let g:airline#extensions#readonly#symbol   = '⊘'
-	let g:airline#extensions#linecolumn#prefix = '¶'
-	let g:airline#extensions#paste#symbol      = 'ρ'
-	let g:airline_symbols.linenr    = '␊'
-	let g:airline_symbols.branch    = '⎇'
-	let g:airline_symbols.paste     = 'ρ'
-	let g:airline_symbols.paste     = 'Þ'
-	let g:airline_symbols.paste     = '∥'
-	let g:airline_symbols.whitespace = 'Ξ'
-else
-	let g:airline#extensions#tabline#left_sep = ''
-	let g:airline#extensions#tabline#left_alt_sep = ''
-	" powerline symbols
-	let g:airline_left_sep = ''
-	let g:airline_left_alt_sep = ''
-	let g:airline_right_sep = ''
-	let g:airline_right_alt_sep = ''
-	let g:airline_symbols.branch = ''
-	let g:airline_symbols.readonly = ''
-	let g:airline_symbols.linenr = ''
-endif
-
-let g:airline_theme = 'nord'
-let g:airline#extensions#syntastic#enabled = 1
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
+" enable bracket matching
+let g:rainbow_active = 1
 
