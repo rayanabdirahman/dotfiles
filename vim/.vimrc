@@ -77,14 +77,9 @@ set number
 syntax on
 set ruler
 
-" check for terminal colours
-if has('nvim') || has('termguicolors')
-  set termguicolors
-endif
-
 " set colorscheme
+let g:challenger_deep_termcolors = 16
 colorscheme challenger_deep
-
 
 "*******************************************************************
 "Lightline Settings
