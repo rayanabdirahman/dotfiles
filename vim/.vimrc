@@ -30,6 +30,9 @@ Plugin 'mattn/emmet-vim'
 " YouCompleteMe code completion
 Plugin 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 
+" Typescript syntax highlighting
+Plugin 'leafgarland/typescript-vim'
+
 " Gitgutter
 Plugin 'airblade/vim-gitgutter'
 
