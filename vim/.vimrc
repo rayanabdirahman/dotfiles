@@ -30,6 +30,13 @@ Plugin 'mattn/emmet-vim'
 " YouCompleteMe code completion
 Plugin 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 
+" FZF fuzzy finder for document search
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'
+
+" Typescript syntax highlighting
+Plugin 'leafgarland/typescript-vim'
+
 " Gitgutter
 Plugin 'airblade/vim-gitgutter'
 
@@ -67,6 +74,11 @@ set softtabstop=2
 " Line managment
 " show line number
 set number
+
+
+" If installed using Homebrew
+set rtp+=/usr/local/opt/fzf
+
 
 
 "*******************************************************************
