@@ -9,7 +9,9 @@ export ZSH="/Users/macbook/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="fire"
+# ZSH_THEME="fire"
+# ZSH_THEME="amuse-custom"
+ZSH_THEME="spaceship"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -65,7 +67,18 @@ ZSH_THEME="fire"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  web-search
+  autojump
 )
+
+# fo [FUZZY PATTERN] - Open the selected file with the default editor
+#   - Bypass fuzzy finder if there's only one match (--select-1)
+#   - Exit if there's no match (--exit-0)
+fo() {
+  local files
+  IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
+  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+}
 
 source $ZSH/oh-my-zsh.sh
 
@@ -100,5 +113,24 @@ source $ZSH/oh-my-zsh.sh
 # point vim to use macvim
 alias vim='mvim -v'
 alias tmux="tmux -2"
+alias python="python3"
+
+# Install `tree` first — brew install tree
+function t() {
+  # Defaults to 3 levels deep, do more with `t 5` or `t 1`
+  # pass additional args after
+  tree -I '.git|node_modules|bower_components|.DS_Store' --dirsfirst --filelimit 15 -L ${1:-3} -aC $2
+}
+
+# for autojump to directory
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+
 export TERM=xterm-256color
 
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/macbook/Documents/workspace/development/centrica/LocalEnergyMarket/backend/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/macbook/Documents/workspace/development/centrica/LocalEnergyMarket/backend/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/macbook/Documents/workspace/development/centrica/LocalEnergyMarket/backend/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/macbook/Documents/workspace/development/centrica/LocalEnergyMarket/backend/node_modules/tabtab/.completions/sls.zsh
