@@ -1,5 +1,5 @@
 # Dotfiles
-A collection of configuration files to make iTerm2 + zsh + vim beautiful 😍
+> A collection of configuration files to make iTerm2 + zsh + vim beautiful 😍
 
 ## Setting up environment
 * [iTerm](https://www.iterm2.com/)
